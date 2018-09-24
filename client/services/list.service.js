@@ -1,41 +1,25 @@
-console.log('Loaded FireBase')
-var firebase = require('firebase')
-// initialize your firebase app
-firebase.initializeApp({
-  apiKey: "AIzaSyBS92B_FscLBZZCXCL4bjsUTQYIhKagwys",
-  authDomain: "uptolists.firebaseapp.com",
-  databaseURL: "https://uptolists.firebaseio.com",
-  projectId: "uptolists",
-  storageBucket: "uptolists.appspot.com",
-  messagingSenderId: "832121698821"
-})
-
-const settings = {
-  timestampsInSnapshots: true
-}
-
-// save a reference to the firestore database
-// to access it in the future
-const db = firebase.firestore()
-db.settings(settings)
+import { Firebase } from "./firebase.init";
 export default class ListsService {
 
   constructor() {
     console.log('Tools Loaded')
     this.lists = null
-  }
+ }
 
   getLists() {
     if (!this.lists) {
       this.lists = []
-      this.lists = db.collection('lists')
+      this.lists = Firebase.firestore.collection('lists')
       return this.lists;
     } else {
       return this.lists
     }
   }
-  getListItems(list) {
-    return db.collection('lists/' + list + '/items')
+  getListItems(listId) {
+    return Firebase.firestore.collection('lists/' + listId + '/items')
+  }
+  getList(listId) {
+    return Firebase.firestore.doc('lists/' + listId)
   }
   addItemToList(item) {
 
