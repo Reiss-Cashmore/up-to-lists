@@ -1,13 +1,8 @@
 var _firebase = require('firebase')
 var firebaseui = require('firebaseui');
-
+import {firebaseConfig} from 'services/firebase.config.js'
 let config = {
-   ...{  apiKey: "AIzaSyBS92B_FscLBZZCXCL4bjsUTQYIhKagwys",
-   authDomain: "uptolists.firebaseapp.com",
-   databaseURL: "https://uptolists.firebaseio.com",
-   projectId: "uptolists",
-   storageBucket: "uptolists.appspot.com",
-   messagingSenderId: "832121698821"}
+   ...firebaseConfig
 };
 
 let settings = {timestampsInSnapshots: true};
