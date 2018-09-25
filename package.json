@@ -41,6 +41,7 @@
   "dependencies": {
     "babel-runtime": "^6.18.0",
     "firebase": "^5.5.1",
+    "firebaseui": "^3.4.1",
     "promise-polyfill": "^6.0.2",
     "vue": "^2.2.0",
     "vue-material": "^1.0.0-beta-10.2",
