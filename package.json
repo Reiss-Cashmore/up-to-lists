@@ -49,6 +49,7 @@
     "vue-material": "^1.0.0-beta-10.2",
     "vue-router": "^2.0.0",
     "vuefire": "^2.0.0-alpha.15",
+    "vuetify": "^1.2.5",
     "vuex": "^2.0.0",
     "vuex-router-sync": "^4.0.0"
   },
@@ -76,7 +77,6 @@
     "rimraf": "^2.6.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.13.1",
-    "vue-cli-plugin-vuetify": "^0.2.0",
     "vue-loader": "^11.0.0",
     "vue-template-compiler": "^2.2.0",
     "webpack": "2.2.0",
