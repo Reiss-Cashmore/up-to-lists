@@ -1,35 +1,29 @@
 <template>
   <div v-on:click="viewList">
 
-    <md-card   class="md-accent" md-with-hover>
-      <md-ripple>
+    <v-card color="blue-grey darken-2" class="white--text">
+      <v-card-title primary-title>
+        <div>
+          <v-icon>thumb_up</v-icon>{{list.upvotes}}
+          <h3 class="headline mb-0">{{list.name}}</h3>
+          <span class="grey--text">{{list.summary}}</span>
+        </div>
+      </v-card-title>
+      <v-card-text>
+        <v-data-table :headers="headers" :items="listItems" hide-actions class="elevation-1">
+          <template slot="items" slot-scope="entry">
+            <td class="">{{ entry.title }}</td>
+            <td class="">{{ entry.upvotes - entry.downvotes }}</td>
+          </template>
+        </v-data-table>
+        <span v-if="listItems - 7 > 0" class="md-caption pull-right">{{listItems.length - 7}} more entries </span>
+      </v-card-text>
 
-        <md-card-header>
-          <md-icon>thumb_up</md-icon> {{list.upvotes}}
-          <div class="md-title">{{list.name}}</div>
-          <div class="md-subhead">{{list.summary}}</div>
-
-        </md-card-header>
-
-        <md-card-content>
-          <md-table class="md-dense" v-model="listItems">
-            <md-table-row slot="md-table-row" slot-scope="{ item }">
-              <md-table-cell md-label="Chromebook">{{ item.title }}</md-table-cell>
-              <md-table-cell md-label="Votes" md-numeric>{{ item.upvotes - item.downvotes }}</md-table-cell>
-
-            </md-table-row>
-          </md-table>
-
-          <span v-if="listItems - 7 > 0" class="md-caption pull-right">{{listItems.length - 7}} more entries</span>
-
-        </md-card-content>
-
-        <md-card-actions>
-          <md-button>Add entry</md-button>
-          <md-button>Save</md-button>
-        </md-card-actions>
-      </md-ripple>
-    </md-card>
+      <v-card-actions>
+        <v-btn flat color="orange">Add Entry</v-btn>
+        <v-btn flat color="orange">Save</v-btn>
+      </v-card-actions>
+    </v-card>
   </div>
 </template>
 
@@ -40,7 +34,16 @@
     name: "list-summary",
     props: ["list", "to"],
     data: () => ({
-      listItems: []
+      listItems: [],
+      headers:[{
+  text: 'name',
+  sortable: false,
+  width: '70'
+}, {
+  text: 'votes',
+  sortable: false,
+  width: '40'
+}]
     }),
     methods: {
       viewList: function () {
